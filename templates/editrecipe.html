@@ -1,0 +1,211 @@
+{% extends 'base.html' %} {% block recipes %}
+<div class="container">
+  <h3>Edit Recipe</h3>
+
+  <div class="row">
+    <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">create</i>
+          <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}">
+          <label for="icon_prefix">Recipe Name</label>
+          <span class="helper-text" data-error="wrong" data-success="right">What is the name of your recipe</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">subject</i>
+          <textarea id="textarea2" name="overview" class="materialize-textarea validate" data-length="150">{{recipe.overview}}</textarea>
+          <label for="overview">Short Description</label>
+          <span class="helper-text" data-error="wrong" data-success="right">Brief description of your recipe (max characters 150)</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">image</i>
+          <textarea id="url" name="url" class="materialize-textarea validate">{{recipe.url}}</textarea>
+          <label for="overview">Image URL</label>
+          <span class="helper-text" data-error="wrong" data-success="right">Please enter the URL of the image, for more details <a href="#">click here</a></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">star</i>
+          <select class="icons" name="rating">
+                  <option value="" disabled selected>Choose your rating</option>
+                  {% for rat in rating %}
+                    {% if rat.rating == rat.rating %}
+                      <option value="{{rat.rating}}" selected >{{rat.rating}}</option>
+                    {% else %}
+                      <option value="{{rat.rating}}">{{rat.rating}}</option>
+                    {% endif %}  
+                  {% endfor %}  
+                </select>
+          <label>Rating</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">restaurant</i>
+          <select class="icons" name="serves">
+                  <option value="" disabled selected>Serves</option>
+                  {% for ser in serves %}
+                    {% if ser.serves == ser.serves %}
+                        <option value="{{ser.serves}}" selected >{{ser.serves}}</option>
+                    {% else %} 
+                       <option value="{{ser.serves}}">{{ser.serves}}</option>
+                    {% endif %} 
+                  {% endfor %}   
+                </select>
+          <label>Serves</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">local_dining</i>
+          <select name="category">
+            <option value="" disabled selected>Choose Category</option>
+                      {% for cat in category %}
+                        {% if cat.category == cat.category %}
+                          <option value="{{cat.category}}" selected >{{cat.category}}</option>
+                        {% else %} 
+                          <option value="{{cat.category}}">{{cat.category}}</option>
+                        {% endif %} 
+                      {% endfor %} 
+          </select>
+          <label>Category</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">flag</i>
+          <select name="nationality_name">
+            <option value="" disabled selected>Choose the nationality</option>
+                  {% for nat in nationality %}
+                        {% if nat.nationality == nat.nationality %}
+                          <option value="{{nat.nationality_name}}" selected >{{nat.nationality_name}}</option>
+                        {% else %} 
+                          <option value="{{nat.nationality_name}}">{{nat.nationality_name}}</option>
+                        {% endif %}                   
+                  {% endfor %}        
+          </select>
+          <label>Nationality of Recipe</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <i class="material-icons prefix">watch_later</i>
+          <div class="input-field inline">
+            <input type="number" id="prep_time" name="prep_time" min="1" max="180" value="{{recipe.prep_time}}">
+            <label for="prep_time">Prep time</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Enter the preperation time in minutes, if prep time is 2 hours, please enter 120</span>
+          </div>
+        </div>
+        <div class="col s6">
+          <i class="material-icons prefix">watch_later</i>
+          <div class="input-field inline">
+            <input type="number" id="cook_time" name="cook_time" min="1" max="180" value="{{recipe.cook_time}}">
+            <label for="cook_time">Cook time</label>
+            <span class="helper-text" data-error="wrong" data-success="right"> Enter the cooking time in minutes, if cooking time is 2 hours, please enter 120</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="rc-h4"><blockquote>Ingredients</blockquote></span>
+        <span class="rc-sm">Please enter the ingredients needed to make your dish.</span>
+      </div>
+      <div class="row mg-10 grey lighten-5"> 
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_1" class="materialize-textarea validate">{{recipe.ingredient_1}}</textarea>
+          <label for="overview">1</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_2" class="materialize-textarea validate">{{recipe.ingredient_2}}</textarea>
+          <label for="overview">2</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_3" class="materialize-textarea validate">{{recipe.ingredient_3}}</textarea>
+          <label for="overview">3</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_4" class="materialize-textarea validate">{{recipe.ingredient_4}}</textarea>
+          <label for="overview">4</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_5" class="materialize-textarea validate">{{recipe.ingredient_5}}</textarea>
+          <label for="overview">5</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_6" class="materialize-textarea validate">{{recipe.ingredient_6}}</textarea>
+          <label for="overview">6</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_7" class="materialize-textarea validate">{{recipe.ingredient_7}}</textarea>
+          <label for="overview">7</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_8" class="materialize-textarea validate">{{recipe.ingredient_8}}</textarea>
+          <label for="overview">8</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_9" class="materialize-textarea validate">{{recipe.ingredient_9}}</textarea>
+          <label for="overview">9</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_10" class="materialize-textarea validate">{{recipe.ingredient_10}}</textarea>
+          <label for="overview">10</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_11" class="materialize-textarea validate">{{recipe.ingredient_11}}</textarea>
+          <label for="overview">11</label>
+        </div>
+        <div class="input-field col s6">
+          <textarea id="ingredients" name="ingredient_12" class="materialize-textarea validate">{{recipe.ingredient_12}}</textarea>
+          <label for="overview">12</label>
+        </div>
+      </div>
+      <div class="row">
+        <span class="rc-h4"><blockquote>Method</blockquote></span>
+        <span class="rc-sm">Enter the instructions for making your tasty recipe!!</span>
+      </div>
+      <div class="row mg-10 grey lighten-5">
+        <div class="input-field col s12">
+          <textarea id="method" name="method_1" class="materialize-textarea validate">{{recipe.method_1}}</textarea>
+          <label for="overview">1</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="method" name="method_2" class="materialize-textarea validate">{{recipe.method_2}}</textarea>
+          <label for="overview">2</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="method" name="method_3" class="materialize-textarea validate">{{recipe.method_3}}</textarea>
+          <label for="overview">3</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="method" name="method_4" class="materialize-textarea validate">{{recipe.method_4}}</textarea>
+          <label for="overview">4</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="method" name="method_5" class="materialize-textarea validate">{{recipe.method_5}}</textarea>
+          <label for="overview">5</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="method" name="method_6" class="materialize-textarea validate">{{recipe.method_6}}</textarea>
+          <label for="overview">6</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="method" name="method_7" class="materialize-textarea validate">{{recipe.method_7}}</textarea>
+          <label for="overview">7</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="method" name="method_8" class="materialize-textarea validate">{{recipe.method_8}}</textarea>
+          <label for="overview">8</label>
+        </div>
+      </div>
+      <div class="row center-align">
+        <br>
+        <button class="btn waves-effect waves-light btn-large" type="submit">Edit Recipe
+          <i class="material-icons right">send</i>
+        </button>
+        <br><br>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
