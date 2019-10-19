@@ -1,91 +1,76 @@
 {% extends 'base.html' %} {% block recipes %}
+<!-- Home page with parrallax background images -->
       
-      
- <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br><br>
-        <h1 class="header center white-text text-lighten-2">Recipes from around the world.......</h1>
-
-        <div class="row center">
-          <a href="#" id="download-button" class="btn-large waves-effect waves-light z-depth-5 light-green">Sign Up</a>
-        </div>
-        <br><br>
-
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center white-text text-lighten-2">Recipes from around the world.......</h1>
+      <div class="row center">
+        <!-- Only shows Isgn up button if user is not logged in -->
+        {% if current_user.is_authenticated == False %}
+          <a href="{{url_for('sign_up_page')}}" id="download-button" class="btn-large waves-effect waves-light z-depth-5 light-green">Sign Up</a>
+        {% endif %}
       </div>
-    </div>
-    <div class="parallax"><img src="{{url_for('static', filename='images/image3.jpg')}}" alt="Unsplashed background img 1"></div>
-  </div>
-
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h4 class="center grey-text light"><i class="material-icons">explorer</i>Explore.....</h4>
-            <p class="light text-darken-4">Take a look around and explore the numerous recipes that we have from around the world.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h4 class="center grey-text light"><i class="material-icons">bubble_chart</i>  Experiment...</h4>
-            <p class="light text-darken-4">Try something that you have never tried before, look around and experiment with different flavours.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h4 class="center grey-text light"><i class="material-icons">favorite</i>  Enjoy...</h4>
-            <p class="light text-darken-4">We have something for everyone, whether you know what you like or are a bit more more adventurous.</p>
-          </div>
-        </div>
-      </div>
-
+      <br><br>
     </div>
   </div>
-
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 white-text grey darken-4 grow light">Join our users and become a member of the 'Recipe Hub' and gain access to hundreds of recipes.</h5>
+  <div class="parallax"><img src="{{url_for('static', filename='images/image3.jpg')}}" alt="Unsplashed background img 1"></div>
+</div>
+<div class="container">
+  <div class="section">
+    <!-- Hero section to advertise the features of the site -->
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h4 class="center grey-text light"><i class="material-icons">explorer</i>Explore.....</h4>
+          <p class="light text-darken-4">Take a look around and explore the numerous recipes that we have from around the world.</p>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h4 class="center grey-text light"><i class="material-icons">bubble_chart</i> Experiment...</h4>
+          <p class="light text-darken-4">Try something that you have never tried before, look around and experiment with different flavours.</p>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h4 class="center grey-text light"><i class="material-icons">favorite</i> Enjoy...</h4>
+          <p class="light text-darken-4">We have something for everyone, whether you know what you like or are a bit more more adventurous.</p>
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="{{url_for('static', filename='images/image2.jpg')}}" alt="Unsplashed background img 2"></div>
   </div>
-
-  <div class="container">
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Join Us</h4>
-          <p class="left-align light">Sign up now and gain access to your very own Recipe Hub, you will have access to add your own favourite recipes whcih will be stored on our servers so that they can never be lost again. Share your amazing creations with our other users and allow them to make changes and update your recipes to keep them up to date and current. If you have a secret family recipe that you have uploaded, then you have the option to delete your recipes from our site, so you can rest assured that this is the perfect accompaniment to your hard earned recipes.</p>
-        </div>
+</div>
+<div class="parallax-container valign-wrapper">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <div class="row center">
+        <h5 class="header col s12 white-text grey darken-4 grow light">Join our users and become a member of the 'Recipe Hub' and gain access to hundreds of recipes.</h5>
       </div>
-
     </div>
   </div>
-
-
-  <div class="parallax-container valign-wrapper">
-
-
-        <div class="row">
-          <div class="base-container">
-          <h5 class="col white-text grey darken-4 grow light">If these recipes are making your mouth water then make sure to sign up and get access to add your own recipes.</h5>
-        </div>
+  <div class="parallax"><img src="{{url_for('static', filename='images/image2.jpg')}}" alt="Unsplashed background img 2"></div>
+</div>
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 center">
+        <h3><i class="mdi-content-send brown-text"></i></h3>
+        <h4>Join Us</h4>
+        <p class="left-align light">Sign up now and gain access to your very own Recipe Hub, you will have access to add your own favourite recipes whcih will be stored on our servers so that they can never be lost again. Share your amazing creations with our other users and allow
+          them to make changes and update your recipes to keep them up to date and current. If you have a secret family recipe that you have uploaded, then you have the option to delete your recipes from our site, so you can rest assured that this is
+          the perfect accompaniment to your hard earned recipes.</p>
       </div>
-
-    <div class="parallax"><img src="{{url_for('static', filename='images/image1.jpg')}}" alt="Unsplashed background img 3"></div>
+    </div>
   </div>
-
-      
-        {% endblock %}
+</div>
+<div class="parallax-container valign-wrapper">
+  <div class="row">
+    <div class="base-container">
+      <h5 class="col white-text grey darken-4 grow light">If these recipes are making your mouth water then make sure to sign up and get access to add your own recipes.</h5>
+    </div>
+  </div>
+  <div class="parallax"><img src="{{url_for('static', filename='images/image1.jpg')}}" alt="Unsplashed background img 3"></div>
+</div>
+{% endblock %}

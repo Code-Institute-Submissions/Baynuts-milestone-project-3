@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block recipes %}
+<!-- Sign up page,  username and password fields, password sent as hash -->
+<div class="container">
+  <h3>Sign Up</h3>
+
+  <div class="row card">
+    <form action="{{ url_for('sign_up') }}" method="POST" class="col s12">
+      <!-- Insert hash token -->      
+      {{ form.csrf_token }}
+      <!-- Enter username, maximum characters 35, allows special characters  -->      
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i> {{ form.username(size=35, placeholder="Username") }}
+        <span class="helper-text" data-error="wrong" data-success="right">Please choose a username</span>
+      </div>
+      <!-- Enter password, maximum 18 characters, sent as hash -->
+      <div class="input-field col s12">
+        <i class="material-icons prefix">enhanced_encryption</i> {{ form.password(size=18, placeholder="Password") }}
+        <span class="helper-text" data-error="wrong" data-success="right">Please choose a password</span>
+      </div>
+      <br/><br/>
+      <div class="row center-align">
+        <br/><br/><br/>
+      </div>
+      <div class="row center-align">
+        <br>
+        <!-- Submit form button, Sign up -->
+        <button class="btn waves-effect waves-light btn-large" type="submit">Sign Up
+          <i class="material-icons right">send</i>
+        </button>
+        <br/><br/>
+      </div>
+    </form>
+  </div>
+  <div class="col s12">
+    <div class="card grey lighten-3">
+      <div class="card-content">
+        <span class="card-title">Come and join us!!</span>
+        <p>Sign up and get access to add and edit the recipes available on our site. Amaze the other users with your extraordinary creations and try something that you havent tried befor.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

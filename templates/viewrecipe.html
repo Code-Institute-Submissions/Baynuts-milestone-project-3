@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block recipes %}
+<!-- Full recipe view, displays image and full details of the recipe -->
+<div class="container">
+  <h3>{{recipe.recipe_name}}</h3>
+
+  <div class="row">
+    <div class="col s12 m8">
+      <img class="responsive-img" src="{{recipe.url}}">
+      <br />
+      <!-- Display recipe description -->
+      <h6 class="light">Description</h6>
+      {{recipe.overview}}
+      <br /><br />
+      <!-- Displays the method if cooking -->
+      <h6 class="light">Method</h6>
+      1. {{recipe.method_1}}<br />
+      2. {{recipe.method_2}}<br /> 
+      3. {{recipe.method_3}}<br /> 
+      <!-- Only shows methods 4 - 8 if they were entered -->
+      {% if recipe.method_4|length %}4. {{recipe.method_4}}{% endif %}<br /> 
+      {% if recipe.method_5|length %}5. {{recipe.method_5}}{% endif %}<br /> 
+      {% if recipe.method_6|length %}6. {{recipe.method_6}}{% endif %}<br /> 
+      {% if recipe.method_7|length %}7. {{recipe.method_7}}{% endif %}<br /> 
+      {% if recipe.method_8|length %}8. {{recipe.method_8}}{% endif %}<br />
+      <br />
+    </div>
+    
+    <div class="col s12 m4 grey lighten-3 bords">
+      <!-- Display recipe rating -->
+      <p>Rating: {{recipe.rating}}</p>
+      <div class="divider"></div>
+      <!-- Display recipe serving information -->      
+      <p>Serves: {{recipe.serves}}</p>
+      <div class="divider"></div>
+      <!-- Display recipe category, breakfast, lunch, dinner, dessert -->      
+      <p>Category: {{recipe.category}}</p>
+      <div class="divider"></div>
+      <!-- Display nationality of recipe -->      
+      <p>Nationality: {{recipe.nationality}}</p>
+      <div class="divider"></div>
+      <div class="row section">
+        <div class="col s6">
+          <!-- Display recipe prep and cook times -->
+          Cook time:<br/> {{recipe.cook_time}}<br/> minutes
+        </div>
+        <div class="col s6">
+          Prep time:<br/> {{recipe.prep_time}}<br/> minutes
+        </div>
+      </div>
+      <div class="divider"></div>
+      <h6 class="light">Ingredients</h6>
+      <!-- Display recipe ingredients -->
+      {{recipe.ingredient_1}}<br/>
+      {{recipe.ingredient_2}}<br/>
+      {{recipe.ingredient_3}}<br/>
+      {{recipe.ingredient_4}}<br/>
+      <!-- Only display ingredients 5 - 12 if they were entered -->
+      {% if recipe.ingredient_5|length %}{{recipe.ingredient_5}}<br/>{% endif %}
+      {% if recipe.ingredient_6|length %}{{recipe.ingredient_6}}<br/>{% endif %} 
+      {% if recipe.ingredient_7|length %}{{recipe.ingredient_7}}<br/>{% endif %} 
+      {% if recipe.ingredient_8|length %}{{recipe.ingredient_8}}<br/>{% endif %}
+      {% if recipe.ingredient_9|length %}{{recipe.ingredient_9}}<br/>{% endif %} 
+      {% if recipe.ingredient_10|length %}{{recipe.ingredient_10}}<br/>{% endif %}
+      {% if recipe.ingredient_11|length %}{{recipe.ingredient_11}}<br/>{% endif %}
+      {% if recipe.ingredient_12|length %}{{recipe.ingredient_12}}<br />{% endif %}
+      <br /><br />
+    </div>
+    
+    <div class="col s12 m4 grey lighten-3 bords">
+       <!-- Only allow logged in users to edit or delete recipes -->
+      {% if current_user.is_authenticated %}
+      <div class="card-content">
+        <p>
+          <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Edit</a>
+          <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Delete</a>
+        </p>
+      </div>
+      {% endif %}
+    </div>
+    
+  </div>
+</div>
+{% endblock %}

@@ -2,85 +2,86 @@
 <html>
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
     </head>
-    <body>
-      
-      <header>
-        
+        <!-- Base template used to generate overall theme and structure for whole site -->    
+<body>
+<header>
   <nav>
-    <div class="nav-wrapper">
-      <a href="{{url_for('get_recipes')}}" class="brand-logo">Logo</a>
+    <!-- Navigation element for desktop devices -->
+    <div class="nav-wrapper grey darken-4">
+      <a href="{{url_for('index')}}" class="brand-logo"><img src="{{url_for('static', filename='images/recipe-hub-logo.jpg')}}"></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="{{url_for('get_recipes')}}">Home</a></li>
-        <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
-        <li><a href="#">Empty</a></li>
-      </ul>
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="{{url_for('get_recipes')}}">Home</a></li>
-        <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
-        <li><a href="#">Empty</a></li>
-  </ul>
-  </div>
-  </nav>
-      </header>
-
-        <h1>Heading!!!</h1>
-        {% block recipes %}
-        {% endblock %}
+        <li><a href="{{url_for('index')}}">Home</a></li>
+        <li><a href="{{url_for('get_recipes')}}">View Recipes</a></li>   
+        <!-- Only shows sign up and login list items if user is not logged in -->
+        {% if current_user.is_authenticated == False %}
+        <li><a href="{{url_for('sign_up_page')}}">Sign Up</a></li>
+        <li><a href="{{url_for('login')}}">Login</a></li> 
+        {% endif %}
+        <!-- Add recipe and logout links only available if user is logged in -->
+        {% if current_user.is_authenticated %}
+        <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li> 
+        <li><a href="{{url_for('logout')}}">Logout</a></li> 
+        {% endif %}
         
+      </ul>
+      <!-- Navigation element for mobile devices -->
+      <ul class="sidenav" id="mobile">
+        <li><a href="{{url_for('index')}}">Home</a></li>
+        <li><a href="{{url_for('get_recipes')}}">View Recipes</a></li>    
+        <!-- Only shows sign up and login list items if user is not logged in -->
+        {% if current_user.is_authenticated == False %}
+        <li><a href="{{url_for('sign_up_page')}}">Sign Up</a></li>
+        <li><a href="{{url_for('login')}}">Login</a></li>   
+        {% endif %}
+        <!-- Add recipe and logout links only available if user is logged in -->
+        {% if current_user.is_authenticated %}
+        <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li> 
+        <li><a href="{{url_for('logout')}}">Logout</a></li> 
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+</header>
 
-    <footer class="page-footer teal">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
+  {% block recipes %}
+  {% endblock %}
+        
+<!-- Footer element, text and social link icons -->        
+<footer class="page-footer grey darken-4">
+  <div class="container">
+    <div class="row">
+      <div class="col l9 s12">
+        <h5 class="white-text">Recipe hub</h5>
+        <p class="grey-text text-lighten-4">Join our community of like minded people, peope like you who live for the pleasure of food and the enjoyment of making it from scratch.</p>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Connect</h5>
+        <a href="#"><img class="social" src="{{url_for('static', filename='images/facebook-logo.gif')}}"></a>
+        <a href="#"><img class="social" src="{{url_for('static', filename='images/twitter-logo.gif')}}"></a>
+        <a href="#"><img class="social" src="{{url_for('static', filename='images/instagram-logo.gif')}}"></a>
       </div>
     </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by Materialize
-      </div>
-    </div>
-  </footer>  
+  </div>
+  <div class="footer-copyright grey darken-3">
+    <div class="container"></div>
+  </div>
+</footer>  
         
         
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
-    <script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Additional instructions to implement the form, mobile navigation and parrallax features -->
+<script>
   $(document).ready(function(){
     $('select').formSelect();
     $('input#input_text, textarea#textarea2').characterCounter();
- $('.sidenav').sidenav();
+    $('.sidenav').sidenav();
+    $('.parallax').parallax();
   }); 
-
-    </script>
-    
-    </body>
+</script>
+</body>
 </html>

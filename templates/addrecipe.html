@@ -1,10 +1,12 @@
 {% extends 'base.html' %} {% block recipes %}
+<!-- Add recipe form, all the input fields to enter a full recipe and post it to the database -->
 <div class="container">
   <h3>Add Your Own Recipe!!!</h3>
 
   <div class="row">
     <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
       <div class="row">
+        <!-- Recipe name field -->
         <div class="input-field col s12">
           <i class="material-icons prefix">create</i>
           <input id="recipe_name" name="recipe_name" type="text" class="validate">
@@ -13,6 +15,7 @@
         </div>
       </div>
       <div class="row">
+        <!-- Recipe description field -->
         <div class="input-field col s12">
           <i class="material-icons prefix">subject</i>
           <textarea id="textarea2" name="overview" class="materialize-textarea validate" data-length="150"></textarea>
@@ -21,6 +24,7 @@
         </div>
       </div>
       <div class="row">
+        <!-- Recipe image url field -->
         <div class="input-field col s12">
           <i class="material-icons prefix">image</i>
           <textarea id="url" name="url" class="materialize-textarea validate"></textarea>
@@ -29,6 +33,7 @@
         </div>
       </div>
       <div class="row">
+        <!-- Recipe select field for choosing rating 1 - 5 -->
         <div class="input-field col s6">
           <i class="material-icons prefix">star</i>
           <select class="icons" name="rating">
@@ -39,6 +44,7 @@
                 </select>
           <label>Rating</label>
         </div>
+        <!-- Recipe serves selct field options of 1, 2, 3, 4, 6 or 8-->
         <div class="input-field col s6">
           <i class="material-icons prefix">restaurant</i>
           <select class="icons" name="serves">
@@ -51,6 +57,7 @@
         </div>
       </div>
       <div class="row">
+        <!-- Recipe category select field choices of breakfast, lunch, dinner, dessert -->
         <div class="input-field col s6">
           <i class="material-icons prefix">local_dining</i>
           <select name="category">
@@ -61,6 +68,7 @@
           </select>
           <label>Category</label>
         </div>
+        <!-- Recipe nationalality select field -->
         <div class="input-field col s6">
           <i class="material-icons prefix">flag</i>
           <select name="nationality_name">
@@ -74,6 +82,7 @@
       </div>
       <div class="row">
         <div class="col s6">
+          <!-- Recipe number input field for preparation time -->
           <i class="material-icons prefix">watch_later</i>
           <div class="input-field inline">
             <input type="number" id="prep_time" name="prep_time" min="1" max="180">
@@ -82,6 +91,7 @@
           </div>
         </div>
         <div class="col s6">
+          <!-- Recipe number input field for cooking time -->
           <i class="material-icons prefix">watch_later</i>
           <div class="input-field inline">
             <input type="number" id="cook_time" name="cook_time" min="1" max="180">
@@ -91,6 +101,7 @@
         </div>
       </div>
       <div class="row">
+         <!-- Recipe ingredients list fields give the option of up to 12 ingredients -->
         <span class="rc-h4"><blockquote>Ingredients</blockquote></span>
         <span class="rc-sm">Please enter the ingredients needed to make your dish.</span>
       </div>
@@ -145,6 +156,7 @@
         </div>
       </div>
       <div class="row">
+        <!-- Recipe method list fields give the option of up to 8 separate stages -->
         <span class="rc-h4"><blockquote>Method</blockquote></span>
         <span class="rc-sm">Enter the instructions for making your tasty recipe!!</span>
       </div>
@@ -184,6 +196,7 @@
       </div>
       <div class="row center-align">
         <br>
+        <!-- Recipe submit button, submits full recipe to the database -->
         <button class="btn waves-effect waves-light btn-large" type="submit">Add Recipe
           <i class="material-icons right">send</i>
         </button>
