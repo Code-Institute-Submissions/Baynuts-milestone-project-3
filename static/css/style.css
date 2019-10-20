@@ -104,3 +104,10 @@ nav {
   border-top: 2px solid #6ba72b;
   border-bottom: 2px solid #6ba72b;
 }
+
+.card .card-image {
+    position: relative;
+    height: 186px;
+    overflow: hidden;
+    width: 100%;
+}
