@@ -115,3 +115,9 @@ nav {
 .name {
     height: 200px!important;
 }
+
+.btn-floating.halfway-fab {
+    position: absolute;
+    right: 8px;
+    bottom: 9px;
+}
