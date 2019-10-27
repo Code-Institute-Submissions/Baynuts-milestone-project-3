@@ -26,10 +26,12 @@
         <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li> 
         <li><a href="{{url_for('logout')}}">Logout</a></li> 
         {% endif %}
-        
       </ul>
+    </div>
+  </nav>      
+      
       <!-- Navigation element for mobile devices -->
-      <ul class="sidenav" id="mobile">
+      <ul class="sidenav" id="slide-out">
         <li><a href="{{url_for('index')}}">Home</a></li>
         <li><a href="{{url_for('get_recipes')}}">View Recipes</a></li>    
         <!-- Only shows sign up and login list items if user is not logged in -->
@@ -42,9 +44,9 @@
         <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li> 
         <li><a href="{{url_for('logout')}}">Logout</a></li> 
         {% endif %}
+         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </ul>
-    </div>
-  </nav>
+
 </header>
 
   {% block recipes %}
