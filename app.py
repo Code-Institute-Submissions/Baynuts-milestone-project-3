@@ -80,6 +80,7 @@ def login():
         if the_user and User.check_password(the_user["password"], form.password.data):
             user_obj = User(the_user["username"])
             login_user(user_obj)
+            flash('Logged in successfully.')
             return render_template("index.html", users=users, user=the_user)
     error = "You have entered the wrong username / password"
     return render_template("login.html", form=form)
