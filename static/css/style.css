@@ -165,7 +165,11 @@ nav {
 }
 
 @media only screen and (max-width: 1130px) {
-.card-title {
+.card .card-content .card-title {
     line-height: 25px!important;
+}
+
+.rec-overview {
+    font-size: 13px!important;
 }
 }
