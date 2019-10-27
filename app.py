@@ -14,6 +14,8 @@ app.config["MONGO_DBNAME"] = 'online_cookbook'
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
+
+
 mongo = PyMongo(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'user_login'
