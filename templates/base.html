@@ -77,12 +77,17 @@
 <!-- Additional instructions to implement the form, mobile navigation and parrallax features -->
 <script>
   $(document).ready(function(){
+    $('.sidenav').sidenav();
     $('select').formSelect();
     $('input#input_text, textarea#textarea2').characterCounter();
-    $('.sidenav').sidenav();
     $('.parallax').parallax();
     $('.modal').modal();
   }); 
+  
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+  });
 </script>
 </body>
 </html>
