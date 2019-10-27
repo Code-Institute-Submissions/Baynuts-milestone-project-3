@@ -8,6 +8,9 @@
         <!-- Base template used to generate overall theme and structure for whole site -->    
 <body>
 <header>
+  {% if current_user.is_authenticated %}
+    <div class="login"><span class="login-txt">You are now logged in</span></div>
+  {% endif %}
   <nav>
     <!-- Navigation element for desktop devices -->
     <div class="nav-wrapper grey darken-4">

@@ -154,7 +154,17 @@ nav {
     font-size: 23px!important;
 }
 
+.login {
+    background-color: #212121;
+    text-align: right;
+    padding-right: 20px;
+    line-height: 13px;
+}
 
+span.login-txt {
+    color: #ffffff;
+    font-size: 10px;
+}
 
 /* Media queries */
 
