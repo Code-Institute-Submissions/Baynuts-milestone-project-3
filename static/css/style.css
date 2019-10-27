@@ -38,6 +38,36 @@ blockquote {
   color: #676767;
 }
 
+.btn-delete {
+    background-color: #ef5858;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.btn-delete:hover {
+  background-color: #fff;
+  border: 1px solid #ef5858;;
+  color: #ef5858;
+}
+
+.btn-edit {
+    background-color: #ffffff;
+    color: #8bc24a;
+    border: 1px solid #8bc24a;
+    box-shadow: none;
+}
+
+.btn-edit:hover {
+  background-color: #8bc24a;
+  color: #ffffff;
+}
+
+.btn-floating.halfway-fab {
+    position: absolute;
+    right: 8px;
+    bottom: 9px;
+}
+
 
 /* Form helpers */
 
@@ -116,34 +146,16 @@ nav {
     height: 200px!important;
 }
 
-.btn-floating.halfway-fab {
-    position: absolute;
-    right: 8px;
-    bottom: 9px;
+/* Media queries */
+
+@media only screen and (min-width: 1200px) {
+.card-title {
+    font-size: 15px;
+}
+
+.rec-overview {
+    font-size: 11px;
 }
 
 
-
-.btn-delete {
-    background-color: #ef5858;
-    color: #ffffff;
-    box-shadow: none;
-}
-
-.btn-delete:hover {
-  background-color: #fff;
-  border: 1px solid #ef5858;;
-  color: #ef5858;
-}
-
-.btn-edit {
-    background-color: #ffffff;
-    color: #8bc24a;
-    border: 1px solid #8bc24a;
-    box-shadow: none;
-}
-
-.btn-edit:hover {
-  background-color: #8bc24a;
-  color: #ffffff;
 }
