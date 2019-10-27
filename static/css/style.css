@@ -147,7 +147,7 @@ nav {
 }
 
 .card-title {
-    font-size: 23px;
+    font-size: 23px!important;
 }
 
 
@@ -156,16 +156,16 @@ nav {
 
 @media only screen and (max-width: 1254px) {
 .card-title {
-    font-size: 20px;
+    font-size: 20px!important;
 }
 
 .rec-overview {
-    font-size: 14px;
+    font-size: 14px!important;
 }
 }
 
 @media only screen and (max-width: 1130px) {
 .card-title {
-    line-height: 25px;
+    line-height: 25px!important;
 }
 }
