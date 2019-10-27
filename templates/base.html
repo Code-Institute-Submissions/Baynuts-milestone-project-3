@@ -13,7 +13,7 @@
     <div class="nav-wrapper grey darken-4">
       <a href="{{url_for('index')}}" class="brand-logo"><img src="{{url_for('static', filename='images/recipe-hub-logo.jpg')}}"></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul class="right hide-on-med-and-down">
         <li><a href="{{url_for('index')}}">Home</a></li>
         <li><a href="{{url_for('get_recipes')}}">View Recipes</a></li>   
         <!-- Only shows sign up and login list items if user is not logged in -->
@@ -31,7 +31,7 @@
   </nav>      
       
       <!-- Navigation element for mobile devices -->
-      <ul class="sidenav" id="slide-out">
+      <ul class="sidenav" id="mobile-demo">
         <li><a href="{{url_for('index')}}">Home</a></li>
         <li><a href="{{url_for('get_recipes')}}">View Recipes</a></li>    
         <!-- Only shows sign up and login list items if user is not logged in -->
@@ -44,9 +44,7 @@
         <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li> 
         <li><a href="{{url_for('logout')}}">Logout</a></li> 
         {% endif %}
-         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </ul>
-
 </header>
 
   {% block recipes %}
